@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Journey 🌈💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family:'Kanit',sans-serif;
+    background: linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1,#8fd3f4);
+    background-size: 300% 300%;
+    animation: bgFlow 14s ease infinite;
+    margin: 0;
+    padding: 20px;
+    color: #2b2b2b;
+  }
+
+  @keyframes bgFlow {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  header {
+    text-align:center;
+    color:#fff;
+    margin-bottom:30px;
+  }
+
+  .title {
+    font-family:'Sacramento',cursive;
+    font-size:68px;
+    text-shadow:0 6px 20px rgba(0,0,0,0.25);
+  }
+  .subtitle {
+    font-size:18px;
+    opacity:0.9;
+    margin-top:-6px;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: rgba(255,255,255,0.6);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+  }
+
+  .container {
+    padding: 20px 30px;
+    position: relative;
+    background: rgba(255,255,255,0.6);
+    border-radius: 16px;
+    width: 45%;
+    margin: 20px 0;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  .left {
+    left: 0;
+  }
+  .right {
+    left: 55%;
+  }
+
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: #ff758c;
+    border: 4px solid #fff;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .right::after {
+    left: -10px;
+  }
+
+  .content h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .content p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 90%;
+      left: 0 !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .timeline::after {
+      left: 20px;
+    }
+    .container::after {
+      left: -10px;
+    }
+  }
+
+  /* Nav buttons styling */
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .nav-btn {
+    padding: 12px 28px;
+    border-radius: 40px;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3,#8fd3f4);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Kanit', sans-serif;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .nav-btn:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="title">Our Journey 🌈💖</h1>
+  <div class="subtitle">Timeline of our 4 wonderful months</div>
+</header>
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>First Meeting 💕</h2>
+      <p>August 12, 2025 - วันแรกที่เราเริ่มคุยกัน… พี่ยังจำความตื่นเต้นและความเขินอายได้ดี  
+        รู้สึกเหมือนโลกหยุดหมุนสักพักเมื่อเห็นข้อความของหนูครั้งแรก ❤️  
+        พี่รู้เลยว่าหนูเป็นคนพิเศษตั้งแต่เริ่มต้น.</p>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content">
+      <h2>The first day we became a couple 🌸</h2>
+      <p>September 12, 2025 - คืนนั้นพี่ใจเต้นแรงมาก… ไม่รู้จะพูดอะไรดี  
+        แต่พี่รู้สึกว่าต้องบอกหนูว่าพี่ชอบหนูมาก  
+        และดีใจที่สุดที่หนูตอบตกลง 💕 🌙</p>
+    </div>
+  </div>
+
+  <div class="container left">
+    <div class="content">
+      <h2>One month anniversary of being a couple 🏖️</h2>
+      <p>October 12, 2025 - เดือนแรกเต็มไปด้วยรอยยิ้มและความสุข  
+        ถึงแม้อยู่ไกลกัน แต่ใจเราใกล้กันมาก  
+        ทุกครั้งที่ได้คุยกับหนู พี่รู้สึกว่าทุกความทรงจำมีค่ามาก </p>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content">
+      <h2>Two month anniversary of being a couple 💖</h2>
+      <p>November 12, 2025 - เดือนที่สอง… พี่เริ่มรู้สึกผูกพันกับหนูมากขึ้นทุกวัน  
+        รู้สึกเหมือนเราเคยรู้จักกันมานาน ทั้งความเข้าใจและความใส่ใจ  
+        ทุกเรื่องที่เราพูดกัน ทำให้พี่รักหนูมากขึ้น</p>
+    </div>
+  </div>
+
+  <div class="container left">
+    <div class="content">
+      <h2>Three month anniversary of being a couple🌳</h2>
+      <p>December 12, 2025 - เดือนที่สาม… พี่รู้สึกโชคดีที่สุดในโลก  
+        ที่ได้เจอหนู เราเติบโตไปด้วยกัน ผ่านเรื่องราวต่าง ๆ  
+        และพี่สัญญาว่าจะรักและดูแลหนูตลอดไป 💖</p>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content">
+      <h2>Four month anniversary of being a couple 🌈</h2>
+      <p>January 12, 2026 - ครบ 4 เดือนของเรา… ทุกวันกับหนูมีความทรงจำที่ไม่ลืม  
+        เราได้สร้างรอยยิ้มและความสุขร่วมกันมากมาย  
+        พี่ตั้งตารอทุกโมเมนต์ที่เราจะสร้างต่อไป 🌈</p>
+    </div>
+  </div>
+</div>
+
+<!-- Nav buttons -->
+<div class="nav-buttons">
+  <a href="gallery.html" class="nav-btn">Back</a>
+  <a href="countdown.html" class="nav-btn">Next</a>
+</div>
+
+</body>
+</html>

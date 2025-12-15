@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Memories 📸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.7);
+      --border: rgba(255,255,255,0.35);
+      --text:#2b2b2b;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+
+    body{
+      font-family:'Kanit',sans-serif;
+      background:linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1,#8fd3f4);
+      background-size:300% 300%;
+      animation:bgFlow 14s ease infinite;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:20px;
+      color:var(--text);
+    }
+
+    @keyframes bgFlow{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:30px;
+      color:#fff;
+    }
+
+    .title{
+      font-family:'Sacramento',cursive;
+      font-size:68px;
+      text-shadow:0 6px 20px rgba(0,0,0,0.25);
+    }
+    .subtitle{
+      font-size:18px;
+      opacity:0.9;
+      margin-top:-6px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+      gap:16px;
+      width:100%;
+      max-width:1000px;
+    }
+
+    .gallery-item{
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      background:var(--glass);
+      backdrop-filter:blur(12px);
+      cursor:pointer;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery-item img{
+      width:100%;
+      display:block;
+      border-radius:20px;
+      transition:transform 0.3s;
+    }
+
+    .gallery-item:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.05);
+    }
+
+    .caption{
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      padding:10px;
+      background:rgba(0,0,0,0.5);
+      color:#fff;
+      font-size:14px;
+      text-align:center;
+      backdrop-filter:blur(5px);
+    }
+
+    .btn{
+      padding:12px 22px;
+      border-radius:16px;
+      font-weight:600;
+      text-decoration:none;
+      color:#fff;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3,#8fd3f4);
+      box-shadow:0 10px 25px rgba(0,0,0,0.25);
+      transition:0.25s ease;
+    }
+    .btn:hover{
+      transform:translateY(-3px) scale(1.03);
+      box-shadow:0 14px 32px rgba(0,0,0,0.3);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    /* Lightbox */
+    .lightbox-overlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.85);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      flex-direction:column;
+      padding:20px;
+    }
+
+    .lightbox-overlay.active{
+      display:flex;
+    }
+
+    .lightbox-content{
+      position:relative;
+      max-width:90%;
+      max-height:80%;
+    }
+
+    .lightbox-content img{
+      max-width:80vw;
+      max-height:70vh;
+      width:auto;
+      height:auto;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .close-btn, .prev-btn, .next-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,0.6);
+      border:none;
+      font-size:28px;
+      border-radius:50%;
+      width:50px;
+      height:50px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:0.25s;
+    }
+
+    .close-btn{
+      top:20px;
+      right:20px;
+      transform:none;
+      font-size:32px;
+    }
+
+    .prev-btn{ left:-60px; }
+    .next-btn{ right:-60px; }
+
+    .close-btn:hover, .prev-btn:hover, .next-btn:hover{
+      background:rgba(255,255,255,0.9);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 class="title">Our Memories 📸</h1>
+  <div class="subtitle">Every moment matters 🌈💖</div>
+</header>
+
+<div class="gallery">
+  <div class="gallery-item" data-index="0"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&q=60" alt="Memory 1"><div class="caption">April 05, 2025 💕</div></div>
+  <div class="gallery-item" data-index="1"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=60" alt="Memory 2"><div class="caption">May 20, 2025 ✨</div></div>
+  <div class="gallery-item" data-index="2"><img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=800&q=60" alt="Memory 3"><div class="caption">Beach Trip 🏖️</div></div>
+  <div class="gallery-item" data-index="3"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&q=60" alt="Memory 4"><div class="caption">Starry Night 🌌</div></div>
+</div>
+
+<div class="navigation">
+  <a href="index.html" class="btn">Back</a>
+  <a href="timeline.html" class="btn">Next</a>
+</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="close-btn" id="closeBtn">&times;</button>
+  <button class="prev-btn" id="prevBtn">&#10094;</button>
+  <div class="lightbox-content">
+    <img src="" id="lightboxImg" alt="">
+    <div class="caption" id="lightboxCaption" style="color:white;margin-top:10px;text-align:center;font-size:16px;"></div>
+  </div>
+  <button class="next-btn" id="nextBtn">&#10095;</button>
+</div>
+
+<script>
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const closeBtn = document.getElementById('closeBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentIndex = 0;
+  const images = Array.from(galleryItems).map(item => ({
+    src: item.querySelector('img').src.replace('w=800','w=1200'),
+    caption: item.querySelector('.caption').innerText
+  }));
+
+  function openLightbox(index){
+    currentIndex = index;
+    lightboxImg.src = images[index].src;
+    lightboxCaption.innerText = images[index].caption;
+    lightbox.classList.add('active');
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+  }
+
+  function showPrev(){
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+    lightboxCaption.innerText = images[currentIndex].caption;
+  }
+
+  function showNext(){
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+    lightboxCaption.innerText = images[currentIndex].caption;
+  }
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click',()=>openLightbox(parseInt(item.dataset.index)));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  lightbox.addEventListener('click',(e)=>{
+    if(e.target === lightbox) closeLightbox();
+  });
+</script>
+
+</body>
+</html>

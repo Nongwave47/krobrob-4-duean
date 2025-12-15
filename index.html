@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ครบรอบ 4 เดือนของเรา </title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.7);
+      --border: rgba(255,255,255,0.35);
+      --text:#2b2b2b;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:'Kanit',sans-serif;
+      min-height:100vh;
+      background:linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1,#8fd3f4);
+      background-size:300% 300%;
+      animation:bgFlow 14s ease infinite;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:var(--text);
+    }
+
+    @keyframes bgFlow{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .app{
+      width:100%;
+      max-width:980px;
+      padding:24px;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:24px;
+      color:#fff;
+    }
+
+    .title{
+      font-family:'Sacramento',cursive;
+      font-size:68px;
+      margin:0;
+      text-shadow:0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .subtitle{
+      margin-top:-10px;
+      font-size:18px;
+      opacity:0.95;
+    }
+
+    .card{
+      background:var(--glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:40px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.18);
+      animation:cardIn 1s ease forwards;
+    }
+
+    @keyframes cardIn{
+      from{opacity:0;transform:translateY(30px) scale(0.96);}
+      to{opacity:1;transform:translateY(0) scale(1);}
+    }
+
+    h2 {
+    margin-top: 0;
+    font-size: 30px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff758c, #ff7eb3, #8fd3f4);
+
+    /* ทำให้ข้อความเป็น gradient */
+    background-clip: text;         /* มาตรฐาน CSS */
+    -webkit-background-clip: text; /* สำหรับ Chrome/Safari */
+    color: transparent;            /* มาตรฐาน CSS แทน -webkit-text-fill-color */
+    -webkit-text-fill-color: transparent; /* สำหรับ Chrome/Safari */
+}
+
+
+    p{
+      font-size:17px;
+      line-height:1.7;
+      color:#444;
+    }
+
+    .actions{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      margin-top:32px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 26px;
+      border-radius:16px;
+      font-weight:600;
+      text-decoration:none;
+      color:#fff;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3,#8fd3f4);
+      box-shadow:0 10px 25px rgba(0,0,0,0.25);
+      transition:0.25s ease;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,0.65);
+      color:#333;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:hover{
+      transform:translateY(-4px) scale(1.03);
+      box-shadow:0 14px 32px rgba(0,0,0,0.3);
+    }
+
+    footer{
+      text-align:center;
+      margin-top:26px;
+      font-size:13px;
+      color:#fff;
+      opacity:0.9;
+    }
+
+    @media (max-width:600px){
+      .title{font-size:52px;}
+      .card{padding:28px;}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1 class="title">Happy 4 Months </h1>
+      <div class="subtitle">รักของเรายังสวยงามเหมือนวันแรก 🌈</div>
+    </header>
+
+    <section class="card">
+      <h2>4 เดือนที่มีค่ามากสำหรับพี่</h2>
+      <p>
+        ขอบคุณที่เข้ามาเป็นรอยยิ้ม เป็นกำลังใจ และเป็นความสบายใจให้กัน
+        ทุกวันที่มีหนูอยู่ พี่มีความสุขมากจริง ๆ นะ
+      </p>
+      <p>
+        ต่อจากนี้ไม่รู้อนาคตจะเป็นยังไง แต่พี่อยากให้รู้ว่า
+        พี่ตั้งใจจะดูแลความรู้สึกนี้ให้ดีที่สุดเสมอ 💗
+      </p>
+
+      <div class="actions">
+        <a href="gallery.html" class="btn">ดูรูปภาพของเรา 📸</a>
+        <a href="message.html" class="btn secondary">ข้อความจากใจ 💌</a>
+      </div>
+    </section>
+
+    <footer>
+      Made with love for our 4 months anniversary 💖
+    </footer>
+  </div>
+</body>
+</html>
