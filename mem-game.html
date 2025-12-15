@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Game 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family:'Kanit',sans-serif;
+    background: linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1,#8fd3f4);
+    background-size: 300% 300%;
+    animation: bgFlow 14s ease infinite;
+    margin: 0;
+    padding: 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
+  }
+  @keyframes bgFlow {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+  h1 {font-family:'Sacramento',cursive;font-size:64px;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,0.25);margin-bottom:10px;text-align:center;}
+  .stats {color:#fff;font-size:18px;margin-bottom:15px;}
+  .grid {display:grid;grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));gap:15px;width:90%;max-width:500px;}
+  .card {background: rgba(255,255,255,0.8);border-radius:12px;height:100px;display:flex;justify-content:center;align-items:center;font-size:32px;cursor:pointer;user-select:none;transition: transform 0.3s;position:relative;box-shadow:0 6px 15px rgba(0,0,0,0.2);}
+  .card.flipped {background: #fff;transform: rotateY(180deg);}
+  .card.matched {background: #a5d6a7;cursor: default;transform: scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+  .card span {display:none;}
+  .card.flipped span {display:block;}
+  .message {margin-top:20px;font-size:20px;color:#fff;text-align:center;}
+
+  .nav-buttons {
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-btn {
+    background: linear-gradient(135deg,#ff758c,#ff7eb3,#8fd3f4);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 500;
+    font-family: 'Kanit', sans-serif;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: center;
+  }
+
+  .nav-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  }
+
+  #playAgainBtn {
+    display:none;
+  }
+</style>
+</head>
+<body>
+
+<h1>Memory Game 💖</h1>
+<div class="stats" id="stats">Score: 0 | Time: 0s</div>
+<div class="grid" id="grid"></div>
+<div class="message" id="message"></div>
+
+<div class="nav-buttons">
+  <a href="letter.html" class="nav-btn">Back</a>
+  <button id="playAgainBtn" class="nav-btn">Play Again</button>
+  <a href="mem-game2.html" class="nav-btn">Next</a>
+</div>
+
+<script>
+const cardsArray = ["💖","💖","🌈","🌈","🌸","🌸","💚","💚","🥰","🥰","💌","💌"];
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let matchedPairs = 0;
+let score = 0;
+let time = 0;
+let timerInterval;
+
+const grid = document.getElementById('grid');
+const message = document.getElementById('message');
+const stats = document.getElementById('stats');
+const playAgainBtn = document.getElementById('playAgainBtn');
+
+function shuffle(array){return array.sort(()=>Math.random()-0.5);}
+
+function initGame(){
+  grid.innerHTML = '';
+  message.textContent = '';
+  playAgainBtn.style.display = 'none';
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+  matchedPairs = 0;
+  score = 0;
+  time = 0;
+  updateStats();
+
+  const cards = shuffle([...cardsArray]);
+  cards.forEach(symbol=>{
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `<span>${symbol}</span>`;
+    card.addEventListener('click', flipCard);
+    grid.appendChild(card);
+  });
+
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    time++;
+    updateStats();
+  },1000);
+}
+
+function updateStats(){
+  stats.textContent = `Score: ${score} | Time: ${time}s`;
+}
+
+function flipCard(){
+  if(lockBoard) return;
+  if(this === firstCard) return;
+
+  this.classList.add('flipped');
+
+  if(!firstCard){
+    firstCard=this;
+    return;
+  }
+
+  secondCard=this;
+  lockBoard=true;
+
+  checkMatch();
+}
+
+function checkMatch(){
+  const isMatch = firstCard.innerHTML === secondCard.innerHTML;
+  if(isMatch){
+    firstCard.classList.add('matched');
+    secondCard.classList.add('matched');
+    matchedPairs++;
+    score += 10;
+    resetBoard();
+    updateStats();
+    if(matchedPairs === cardsArray.length/2){
+      endGame();
+    }
+  } else {
+    score -= 2;
+    updateStats();
+    setTimeout(()=>{
+      firstCard.classList.remove('flipped');
+      secondCard.classList.remove('flipped');
+      resetBoard();
+    },1000);
+  }
+}
+
+function resetBoard(){ [firstCard, secondCard, lockBoard] = [null, null, false]; }
+
+function endGame(){
+  clearInterval(timerInterval);
+  message.textContent = `🎉 Congrats! พี่รักหนูที่สุด 💖 | Score: ${score} | Time: ${time}s`;
+  playAgainBtn.style.display = 'block';
+}
+
+// ปุ่มเล่นอีกครั้ง
+playAgainBtn.addEventListener('click', ()=>{initGame();});
+
+// เริ่มเกมตอนโหลดหน้า
+initGame();
+</script>
+
+</body>
+</html>
