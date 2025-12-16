@@ -16,22 +16,33 @@
 
     body{
       font-family:'Kanit',sans-serif;
-      background:linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1,#8fd3f4);
-      background-size:300% 300%;
-      animation:bgFlow 14s ease infinite;
       min-height:100vh;
       display:flex;
       flex-direction:column;
       align-items:center;
       padding:20px;
       color:var(--text);
-    }
 
-    @keyframes bgFlow{
-      0%{background-position:0% 50%;}
-      50%{background-position:100% 50%;}
-      100%{background-position:0% 50%;}
-    }
+  /* 🌈 Rainbow Gradient */
+    background: linear-gradient(
+     120deg,
+      #ff0000,
+      #ff7f00,
+      #ffff00,
+      #00ff00,
+      #00c3ff,
+      #0000ff,
+      #8a2be2
+  );
+  background-size: 500% 500%;
+  animation: rainbowFlow 18s linear infinite;
+}
+
+@keyframes rainbowFlow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 
     header{
       text-align:center;

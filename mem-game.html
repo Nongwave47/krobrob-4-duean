@@ -6,27 +6,77 @@
 <title>Memory Game 💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family:'Kanit',sans-serif;
-    background: linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1,#8fd3f4);
-    background-size: 300% 300%;
-    animation: bgFlow 14s ease infinite;
-    margin: 0;
+    color: #fff;
+    text-align: center;
     padding: 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
     min-height:100vh;
+
+    /* Rainbow gradient */
+    background: linear-gradient(270deg,
+      #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF
+    );
+    background-size: 1400% 1400%;
+    animation: rainbowFlow 14s linear infinite;
   }
-  @keyframes bgFlow {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-  h1 {font-family:'Sacramento',cursive;font-size:64px;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,0.25);margin-bottom:10px;text-align:center;}
+
+  @keyframes rainbowFlow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  h1 {
+    font-family:'Sacramento',cursive;
+    font-size:64px;
+    color:#fff;
+    text-shadow:0 6px 20px rgba(0,0,0,0.25);
+    margin-bottom:10px;
+    text-align:center;
+  }
+
   .stats {color:#fff;font-size:18px;margin-bottom:15px;}
-  .grid {display:grid;grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));gap:15px;width:90%;max-width:500px;}
-  .card {background: rgba(255,255,255,0.8);border-radius:12px;height:100px;display:flex;justify-content:center;align-items:center;font-size:32px;cursor:pointer;user-select:none;transition: transform 0.3s;position:relative;box-shadow:0 6px 15px rgba(0,0,0,0.2);}
-  .card.flipped {background: #fff;transform: rotateY(180deg);}
-  .card.matched {background: #a5d6a7;cursor: default;transform: scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap:15px;
+    width:90%;
+    max-width:500px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.8);
+    border-radius:12px;
+    height:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    cursor:pointer;
+    user-select:none;
+    transition: transform 0.3s;
+    position:relative;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+    perspective: 1000px;
+  }
+
+  .card.flipped {background:#fff; transform: rotateY(180deg);}
+  .card.matched {background:#a5d6a7; cursor:default; transform: scale(1.05); box-shadow:0 6px 20px rgba(0,0,0,0.3);}
   .card span {display:none;}
   .card.flipped span {display:block;}
+
   .message {margin-top:20px;font-size:20px;color:#fff;text-align:center;}
 
   .nav-buttons {
@@ -56,9 +106,7 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.35);
   }
 
-  #playAgainBtn {
-    display:none;
-  }
+  #playAgainBtn { display:none; }
 </style>
 </head>
 <body>
@@ -171,10 +219,7 @@ function endGame(){
   playAgainBtn.style.display = 'block';
 }
 
-// ปุ่มเล่นอีกครั้ง
 playAgainBtn.addEventListener('click', ()=>{initGame();});
-
-// เริ่มเกมตอนโหลดหน้า
 initGame();
 </script>
 
